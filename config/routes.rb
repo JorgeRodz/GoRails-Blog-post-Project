@@ -13,4 +13,8 @@ Rails.application.routes.draw do
 
   # "as: blog_post" gives the route a name, which can be used in the view helper as 'blog_post_path'
   get '/blog_posts/:id', to: 'blog_posts#show', as: :blog_post
+
+  # we need this route to handle the form submission from the 'new' route
+  post '/blog_posts', to: 'blog_posts#create', as: :blog_posts
+  #----- Blog Posts routes -----
 end
