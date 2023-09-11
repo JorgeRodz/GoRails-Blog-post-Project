@@ -1,0 +1,7 @@
+<h1>Edit Blog Post</h1>
+
+<%# we pass the local variable into the partial %>
+<%= render partial: 'form', locals: {blog_post: @blog_post} %>
+
+<%#                                                  turbo rails %>
+<%= button_to "Delete", @blog_post, method: :delete, data: {turbo_confirm: "Are you sure?"} %>
