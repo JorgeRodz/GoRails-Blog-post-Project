@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  #----- Devise routes-----
+  # This will generate all the routes for the User model through the devise gem
+  devise_for :users
+  #----- Devise routes -----
 
   # Defines the root path route ("/")
   root 'blog_posts#index'
