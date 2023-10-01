@@ -2,6 +2,8 @@ class BlogPost < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
 
+  # ----- Scopes -----
+  # BlogPost.sorted
   scope :sorted, -> { order(published_at: :desc, updated_at: :desc) }
 
   # BlogPost.draft
@@ -12,7 +14,9 @@ class BlogPost < ApplicationRecord
 
   # BlogPost.scheduled
   scope :scheduled, -> { where('published_at > ?', Time.current) }
+  # ----- Scopes -----
 
+  # ----- Helper methods to use in views -----
   def draft?
     published_at.nil?
   end
@@ -24,6 +28,7 @@ class BlogPost < ApplicationRecord
   def scheduled?
     published_at? && published_at > Time.current
   end
+  # ----- Helper methods to use in views -----
 end
 
 =begin
@@ -34,8 +39,8 @@ Status string field:
 - scheduled
 
 'published_at' datetime field
-- nil
-- 1.year.ago - time
-- 1.year.from_now - time
+- draft - nil
+- published - 1.year.ago - time
+- published - 1.year.from_now - time
 
 =end
