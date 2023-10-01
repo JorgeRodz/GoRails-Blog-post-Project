@@ -18,6 +18,11 @@
   </div>
 
   <div>
+    <%= form.label :published %>
+    <%= form.datetime_select :published_at, include_blank: true %>
+  </div>
+
+  <div>
     <%= form.button %>
   </div>
 <% end %>
