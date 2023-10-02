@@ -4,7 +4,7 @@ class BlogPost < ApplicationRecord
 
   # ----- Scopes -----
   # BlogPost.sorted
-  scope :sorted, -> { order(published_at: :desc, updated_at: :desc) }
+  scope :sorted, -> { order(arel_table[:published_at].desc.nulls_last).order(updated_at: :desc) }
 
   # BlogPost.draft
   scope :draft, -> { where(published_at: nil) }
